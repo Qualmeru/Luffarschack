@@ -1,0 +1,122 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace luffarschack
+{
+    class Program
+    {
+      
+      static  char[] s = new char[9];
+     static int[] numbers = new int[9];
+        static void Main(string[] args)
+        {
+        
+            //inistiara alla element till respektive nummer
+              for (int i = 0; i < numbers.Length; i++)
+              {
+                  numbers[i] = i;
+                  
+              }
+             
+              
+         //   var spel = new Spelplan();
+
+            //Håll reda på vems tur det är.
+            var kryss = false;
+
+            //För att kunna räkna antal drag.
+            var antalDrag = 0;
+
+            //Kör spelet till någon har vunnit.
+            while (!(Klart))
+            {
+            //    var ran = rand.Next(1, 9); 
+                rita(new int[]{1,2,3,4,5,6,7,8,9});
+                //Räkna antal drag.
+                antalDrag++;
+
+                if (kryss)
+                    SpelaKryss();
+                else
+                   SpelaRing();
+
+                //Växla vems tur det är att spela.
+                kryss = !(kryss);
+
+                //Presentera spelplanen och invänta Enter-tryck.
+                Console.Clear();
+              //  Presentera();
+                Console.Write("\nDrag {0}. Tryck på Enter.", antalDrag);
+                Console.ReadLine();
+            }
+
+            //När spelet är slut, presentera namnet på vinnaren.
+            if (KryssVann)
+                Console.WriteLine("Kryss vann!");
+            else
+                Console.WriteLine("Ring vann!");
+            Console.Write("Tryck på Enter för att avsluta.");
+            Console.ReadLine();
+
+        }
+
+        private static void rita(int[] num)
+        {
+            Console.BackgroundColor = ConsoleColor.Gray;
+      
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Console.WriteLine("{0}{1}{2}\n{3}{4}{5}\n{6}{7}{8}", numbers[i], numbers[i], numbers[i], numbers[i], numbers[i], numbers[i], numbers[i], numbers[i], numbers[i]);
+               /* if (numbers[i] == )
+                {
+                    Console.WriteLine(s[i]);
+                }*/
+            }
+         //   Console.Clear();
+            Console.BackgroundColor = ConsoleColor.Black;
+       
+        }
+       private static int winner = 0;
+        private static void Presentera()
+        {
+            
+        }
+
+        private static void SpelaRing()
+        {
+            
+        }
+
+        private static void SpelaKryss()
+        {
+            Random rand = new Random();
+            var ran = rand.Next(1, 9); 
+            for (int i = 0; i < 9; i++)
+			{
+                if (ran == numbers[i])
+                {
+
+                }
+			 
+			}
+          
+        }
+
+        public static bool Klart { get { return false; } }
+
+        public static bool KryssVann
+        {
+
+
+            get {
+                if (winner == 1)
+                    return true;
+                else
+                return false;
+            }
+        }
+    }
+}
